@@ -12,10 +12,16 @@ void Kfz::zulGesGewEingabeKfz(double gewichtVM) {
 double Kfz::zulGesGewAusgabeKfz() {
     return zul_ges_gew_kfz;
 }
-Kfz::Kfz()
-    :kennzeichen_kfz("empty")
-{
-    zul_ges_gew_kfz = NULL;
+void Kfz::adreesseKfz(Kfz*) {
+
+}
+Kfz* Kfz::adresseKfz() {
+
+}
+
+Kfz::Kfz(string& kennzeichen_VM, double& gewwicht_VM)
+    :kennzeichen_kfz(kennzeichen_VM), zul_ges_gew_kfz(gewwicht_VM) {
+    next_adress_of_kfz = NULL;
 }
 // * * * END Class Kfz * * *
 // * * * Class Pkw * * *

@@ -8,7 +8,7 @@ using namespace std;
 #define VERERBUNG_H
 /* 
 * * * Class Kfz * * *
-Die Classe 
+Die Classe Kfz entält grundlegende Daten zum KFZ diese Eigenschaften werden an restliche Classen vererbt
 */
 class Kfz {
 private:
@@ -18,13 +18,19 @@ private:
 // speichert die Adresse des nächsten Kfz Node
     Kfz* next_adress_of_kfz;
 public:
+// Eingabe/Ausgabe funktionen
     void kennzeichenEingabeKfz(string&);
     string kennzeichenAusgabeKfz();
     void zulGesGewEingabeKfz(double);
     double zulGesGewAusgabeKfz();
-    Kfz();
+// adressen des Kfz holen/schreiben 
+    void adreesseKfz(Kfz*);
+    Kfz* adresseKfz();
+
+    Kfz(string&,double&);
 };
 // * * * END Class Kfz * * *
+
 // * * * Class Pkw * * *
 class Pkw : public Kfz {
 private:
@@ -39,6 +45,7 @@ public:
     Pkw();
 };
 // * * * END Class Pkw * * *
+
 // * * * Class Lkw * * *
 class Lkw : public Kfz {
 private:
@@ -53,6 +60,7 @@ public:
     Lkw();
 };
 // * * * END Class Lkw * * *
+
 // * * * Class Anhaenger * * *
 class Anhaenger : public Kfz {
 private:
@@ -66,5 +74,22 @@ public:
 
     Anhaenger();
 };
+/*
+* * * Class Liste * * * 
+Zum aufbauen einer verkettete Liste diese Classe speichter den:
+ersten Node der Liste sowei den letzten Node der Liste
+*/
+class Liste{
+private:
+    Kfz* first_node;
+    Kfz* last_node;
+public:
+    // Node holen/schreiben der Daten aus dem erstem/letztem Node
+    Kfz* firstNode();
+    void firstNode(Kfz*);
+    Kfz* lastNode();
+    void lastNode(Kfz*);
 
+};
+// * * * END Liste * * * 
 #endif // VERERBUNG_H
