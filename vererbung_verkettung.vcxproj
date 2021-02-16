@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="vererbung_verkettung.cpp" />
+    <ClCompile Include="vererbung_verkettung_main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vererbung_verkettung.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
