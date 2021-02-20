@@ -1,37 +1,96 @@
-//vererbung
+#ifndef FAHRZEUG_UND_LISTE_H
+#define FAHRZEUG_UND_LISTE_H
 
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <ostream>
 #include <iostream>
-
+#include <iomanip>
 using namespace std;
 
-#ifndef VERERBUNG_H
-#define VERERBUNG_H
-/* 
-* * * Class Kfz * * *
-Die Classe Kfz entält grundlegende Daten zum KFZ diese Eigenschaften werden an restliche Classen vererbt
-*/
-class Kfz {
+class Fahrzeug {
 private:
-// speichert die Daten des KFZ von Kennzeichen und Gewiicht 
-    string kennzeichen_kfz;
-    double zul_ges_gew_kfz;
-// speichert die Adresse des nächsten Kfz Node
-    Kfz* next_adress_of_kfz;
+    string fahrzeug_kennzeichen;
+    double fahrzeug_maximal_gewicht;
+    Fahrzeug* fahrzeug_next_address;
 public:
-// Eingabe/Ausgabe funktionen
-    void kennzeichenEingabeKfz(string&);
-    string kennzeichenAusgabeKfz();
-    void zulGesGewEingabeKfz(double);
-    double zulGesGewAusgabeKfz();
-
-// adressen des Kfz holen/schreiben 
-    void adreesseKfz(Kfz*);
-    Kfz* adresseKfz();
-    Kfz();
-    Kfz(string&,double&);
+    // Adressen fuer die Listen
+    void addresseFahrzeug(Fahrzeug*);
+    Fahrzeug* addresseFahrzeug();
+    // Input in die Klasse
+    void inputDatenFahrzeug();
+    // Ausgabe der Daten aus der Klasse
+    void outputDatenFahrzeug();
+    // Konstruktor
+    Fahrzeug();
+    Fahrzeug(string&, double&);
 };
-// * * * END Class Kfz * * *
+// END Fahrzeug
+class Pkw :public Fahrzeug {
+private:
+    int pkw_anzahl_tueren;
+    int pkw_anzahl_sitze;
+public:
+    // Input in die Klasse
+    void inputDatenPkw();
+    // Ausgabe der Daten aus der Klasse
+    void outputDatenPkw();
+    // Konstruktor
+    Pkw();
+    Pkw(int&, int&, string&, double&);
+};
+// END Pkw
+class Lkw :public Fahrzeug {
+private:
+    int lkw_anzahl_achsen;
+    string lkw_aufbau;
+public:
+    // Input in die Klasse
+    void inputDatenLkw();
+    // Ausgabe der Daten aus der Klasse
+    void outputDatenLkw();
+    // Konstruktor
+    Lkw();
+};
+// END Lkw
+class Anhaenger :public Fahrzeug {
+private:
+    string anhaenger_bremse;
+    string anhaenger_aufbau;
+public:
+    // Input in die Klasse
+    void inputDatenAnhaenger();
+    // Ausgabe der Daten aus der Klasse
+    void outputDatenAnhaenger();
+    // Konstruktor
+    Anhaenger();
+};
+// END Anhaenger
+
+class Liste {
+private:
+    Fahrzeug* first_node;
+    Fahrzeug* last_node;
+public:
+    Fahrzeug* fistNodeListe();
+    void fistNodeListe(Fahrzeug*);
+    Fahrzeug* lastNodeListe();
+    void lastNodeListe(Fahrzeug*);
+    Liste();
+};
+// END Liste
+
+#endif // FAHRZEUG_UND_LISTE_H
 
 
-// * * * END Liste * * * 
-#endif // VERERBUNG_H
+
+
+
+
+
+
+
+
+
+

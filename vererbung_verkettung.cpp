@@ -1,23 +1,148 @@
 #include "vererbung_verkettung.h"
-// * * * Class Kfz * * *
-void Kfz::kennzeichenEingabeKfz(string& kennzeichen_WM) {
-    kennzeichen_kfz = kennzeichen_WM;
+// Class Fahrzeug
+// Adressen fuer die Listen
+void Fahrzeug::addresseFahrzeug(Fahrzeug* address_VM) {
+    fahrzeug_next_address = address_VM;
 }
-string Kfz::kennzeichenAusgabeKfz() {
-    return kennzeichen_kfz;
+Fahrzeug* Fahrzeug::addresseFahrzeug() {
+    return fahrzeug_next_address;
 }
-void Kfz::zulGesGewEingabeKfz(double gewichtVM) {
-    zul_ges_gew_kfz = gewichtVM;
+// Input in die Klasse
+void Fahrzeug::inputDatenFahrzeug() {
+    cout << "Kennzeichen Fahrzeug: ";
+    getline(cin, fahrzeug_kennzeichen);
+    cout << "Maximal Gewicht Fahrzeug: ";
+    cin >> fahrzeug_maximal_gewicht;
 }
-double Kfz::zulGesGewAusgabeKfz() {
-    return zul_ges_gew_kfz;
+// Ausgabe der Daten aus der Klasse
+void Fahrzeug::outputDatenFahrzeug() {
+    cout << endl << endl
+        << "Kennzeichen vom Fahrzueg: " << fahrzeug_kennzeichen << endl
+        << "Maximal Gewicht vom Fahrzeug: " << fahrzeug_maximal_gewicht << endl;
 }
-Kfz::Kfz(string& kennzeichen_VM, double& zulGewicht_VM)
-    :kennzeichen_kfz(kennzeichen_VM), zul_ges_gew_kfz(zulGewicht_VM)
+// Konstruktor
+Fahrzeug::Fahrzeug()
+    :fahrzeug_kennzeichen("empty")
 {
-    next_adress_of_kfz = NULL;
+    fahrzeug_maximal_gewicht = 0.0;
+    fahrzeug_next_address = NULL;
 }
-Kfz::Kfz() {
+Fahrzeug::Fahrzeug(string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM)
+    : fahrzeug_kennzeichen(fahrzeug_kennzeichen_VM)
+{
+    fahrzeug_maximal_gewicht = fahrzeug_max_gew_VM;
+    fahrzeug_next_address = NULL;
 }
+// END Class Fahrzeug
+
+// Class Pkw
+// Input in die Klasse
+void Pkw::inputDatenPkw() {
+    inputDatenFahrzeug();
+    cout << "Anzahl der Tueren Pkw: ";
+    cin >> pkw_anzahl_tueren;
+    cout << "Anzahl der Sitze Pkw";
+    cin >> pkw_anzahl_sitze;
+}
+// Ausgabe der Daten aus der Klasse
+void Pkw::outputDatenPkw() {
+    outputDatenFahrzeug();
+    cout << endl << endl
+        << "Anzahl der Tueren Pkw: " << pkw_anzahl_tueren << endl
+        << "Anzahl der Sitze Pkw: " << pkw_anzahl_sitze << endl;
+}
+// Konstruktor
+Pkw::Pkw() :Fahrzeug()
+{
+    pkw_anzahl_sitze = 0;
+    pkw_anzahl_tueren = 0;
+}
+Pkw::Pkw(int& pkw_anz_sitz_VM, int& pkw_anz_tuer_VM, string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM) : Fahrzeug(fahrzeug_kennzeichen_VM, fahrzeug_max_gew_VM)
+{
+    pkw_anzahl_sitze = pkw_anz_sitz_VM;
+    pkw_anzahl_tueren = pkw_anz_tuer_VM;
+}
+
+// END Class Pkw
+
+// Class Lkw
+// Input in die Klasse
+void Lkw::inputDatenLkw() {
+    inputDatenFahrzeug();
+    cout << "Anzahl der Achsen Lkw: ";
+    cin >> lkw_anzahl_achsen;
+    cout << "Aufbau des Lkw: ";
+    cin >> lkw_aufbau;
+}
+// Ausgabe der Daten aus der Klasse
+void Lkw::outputDatenLkw() {
+    outputDatenFahrzeug();
+    cout << endl << endl
+        << "Anzahl der Achsen Lkw: " << lkw_anzahl_achsen << endl
+        << "Art des Aufbaues Lkw: " << lkw_aufbau << endl;
+}
+// Konstruktor
+Lkw::Lkw() :Fahrzeug(),
+lkw_aufbau("empty")
+{
+    lkw_anzahl_achsen = 0;
+}
+// END Class Lkw
+
+// Class Anhaenger
+// Input in die Klasse
+void Anhaenger::inputDatenAnhaenger() {
+    inputDatenFahrzeug();
+    cout << "Bremse: ";
+    cin >> anhaenger_bremse;
+    cout << "Aufbau";
+    cin >> anhaenger_aufbau;
+}
+// Ausgabe der Daten aus der Klasse
+void Anhaenger::outputDatenAnhaenger() {
+    outputDatenFahrzeug();
+    cout << "Die Beremsen des Anhaengers: " << anhaenger_bremse << endl
+        << "Der Aufbau des Anhaengers:" << anhaenger_aufbau << endl;
+}
+// Konstruktor
+Anhaenger::Anhaenger() :Fahrzeug(),
+anhaenger_bremse("empty"),
+anhaenger_aufbau("empty")
+{
+}
+// END Class Anhaenger
+
+// Class Liste
+Fahrzeug* Liste::fistNodeListe() {
+    return first_node;
+}
+void Liste::fistNodeListe(Fahrzeug* first_node_VM) {
+    first_node = first_node_VM;
+}
+Fahrzeug* Liste::lastNodeListe() {
+    return last_node;
+}
+void Liste::lastNodeListe(Fahrzeug* last_node_VM) {
+    last_node = last_node_VM;
+}
+Liste::Liste() {
+    first_node = NULL;
+    last_node = NULL;
+}
+// END Class Liste
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
