@@ -13,10 +13,10 @@ class Fahrzeug {
 private:
     string fahrzeug_kennzeichen;
     double fahrzeug_maximal_gewicht;
-    Fahrzeug* fahrzeug_next_address;
+    void* fahrzeug_next_address;
 public:
     // Adressen fuer die Listen
-    void addresseFahrzeug(Fahrzeug*);
+    void addresseFahrzeug(void*);
     Fahrzeug* addresseFahrzeug();
     // Input in die Klasse
     void inputDatenFahrzeug();
@@ -35,7 +35,8 @@ public:
     // Input in die Klasse
     void inputDatenPkw();
     // Ausgabe der Daten aus der Klasse
-    void outputDatenPkw();
+    void outputDatenFahrzeug();
+    // void outputDatenPkw();
     // Konstruktor
     Pkw();
     Pkw(int&, int&, string&, double&);

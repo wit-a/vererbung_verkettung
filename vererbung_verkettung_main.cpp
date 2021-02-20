@@ -3,8 +3,8 @@
 int main() {
     int art_des_fahrzeuges;
     Liste Liste_Autos;
-    Fahrzeug* addresse_neu_1 = NULL;
-    Fahrzeug* addresse_neu_2 = NULL;
+    void* addresse_neu_1 = NULL;
+    void* addresse_neu_2 = NULL;
     bool erstes_fahrzeug = true;
     int counter = 1;
 
