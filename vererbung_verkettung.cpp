@@ -1,7 +1,7 @@
 #include "vererbung_verkettung.h"
 // Class Fahrzeug
 // Adressen fuer die Listen
-void Fahrzeug::addresseFahrzeug(Fahrzeug* address_VM) {
+void Fahrzeug::addresseFahrzeug(void* address_VM) {
     fahrzeug_next_address = address_VM;
 }
 Fahrzeug* Fahrzeug::addresseFahrzeug() {
@@ -37,6 +37,7 @@ Fahrzeug::Fahrzeug(string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM)
 
 // Class Pkw
 // Input in die Klasse
+
 void Pkw::inputDatenPkw() {
     inputDatenFahrzeug();
     cout << "Anzahl der Tueren Pkw: ";
@@ -45,8 +46,8 @@ void Pkw::inputDatenPkw() {
     cin >> pkw_anzahl_sitze;
 }
 // Ausgabe der Daten aus der Klasse
-void Pkw::outputDatenPkw() {
-    outputDatenFahrzeug();
+void Pkw::outputDatenFahrzeug() {
+    Fahrzeug::outputDatenFahrzeug();
     cout << endl << endl
         << "Anzahl der Tueren Pkw: " << pkw_anzahl_tueren << endl
         << "Anzahl der Sitze Pkw: " << pkw_anzahl_sitze << endl;
