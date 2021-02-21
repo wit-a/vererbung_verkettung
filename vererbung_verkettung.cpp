@@ -1,7 +1,7 @@
 #include "vererbung_verkettung.h"
 // Class Fahrzeug
 // Adressen fuer die Listen
-void Fahrzeug::addresseFahrzeug(void* address_VM) {
+void Fahrzeug::addresseFahrzeug(Fahrzeug* address_VM) {
     fahrzeug_next_address = address_VM;
 }
 Fahrzeug* Fahrzeug::addresseFahrzeug() {
@@ -28,8 +28,7 @@ Fahrzeug::Fahrzeug()
     fahrzeug_next_address = NULL;
 }
 Fahrzeug::Fahrzeug(string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM)
-    : fahrzeug_kennzeichen(fahrzeug_kennzeichen_VM)
-{
+    : fahrzeug_kennzeichen(fahrzeug_kennzeichen_VM) {
     fahrzeug_maximal_gewicht = fahrzeug_max_gew_VM;
     fahrzeug_next_address = NULL;
 }
@@ -58,8 +57,8 @@ Pkw::Pkw() :Fahrzeug()
     pkw_anzahl_sitze = 0;
     pkw_anzahl_tueren = 0;
 }
-Pkw::Pkw(int& pkw_anz_sitz_VM, int& pkw_anz_tuer_VM, string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM) : Fahrzeug(fahrzeug_kennzeichen_VM, fahrzeug_max_gew_VM)
-{
+Pkw::Pkw(int& pkw_anz_sitz_VM, int& pkw_anz_tuer_VM, string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM) 
+    : Fahrzeug(fahrzeug_kennzeichen_VM, fahrzeug_max_gew_VM) {
     pkw_anzahl_sitze = pkw_anz_sitz_VM;
     pkw_anzahl_tueren = pkw_anz_tuer_VM;
 }
@@ -76,8 +75,8 @@ void Lkw::inputDatenLkw() {
     cin >> lkw_aufbau;
 }
 // Ausgabe der Daten aus der Klasse
-void Lkw::outputDatenLkw() {
-    outputDatenFahrzeug();
+void Lkw::outputDatenFahrzeug() {
+    Fahrzeug::outputDatenFahrzeug();
     cout << endl << endl
         << "Anzahl der Achsen Lkw: " << lkw_anzahl_achsen << endl
         << "Art des Aufbaues Lkw: " << lkw_aufbau << endl;
@@ -87,6 +86,11 @@ Lkw::Lkw() :Fahrzeug(),
 lkw_aufbau("empty")
 {
     lkw_anzahl_achsen = 0;
+}
+Lkw::Lkw(int& lkw_anz_achsen_VM, string& lkw_aufbau_VM, string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM) 
+    : Fahrzeug(fahrzeug_kennzeichen_VM, fahrzeug_max_gew_VM), 
+    lkw_anzahl_achsen(lkw_anz_achsen_VM),
+    lkw_aufbau(lkw_aufbau_VM) {
 }
 // END Class Lkw
 
@@ -100,16 +104,21 @@ void Anhaenger::inputDatenAnhaenger() {
     cin >> anhaenger_aufbau;
 }
 // Ausgabe der Daten aus der Klasse
-void Anhaenger::outputDatenAnhaenger() {
-    outputDatenFahrzeug();
-    cout << "Die Beremsen des Anhaengers: " << anhaenger_bremse << endl
+void Anhaenger::outputDatenFahrzeug() {
+    Fahrzeug::outputDatenFahrzeug();
+    cout << endl << endl 
+        << "Die Beremsen des Anhaengers: " << anhaenger_bremse << endl
         << "Der Aufbau des Anhaengers:" << anhaenger_aufbau << endl;
 }
 // Konstruktor
 Anhaenger::Anhaenger() :Fahrzeug(),
 anhaenger_bremse("empty"),
-anhaenger_aufbau("empty")
-{
+anhaenger_aufbau("empty"){
+}
+Anhaenger::Anhaenger(string& anhaenger_bremse_VM, string& anhaenger_aufbau_VM, string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM) 
+    :Fahrzeug(fahrzeug_kennzeichen_VM, fahrzeug_max_gew_VM),
+    anhaenger_bremse(anhaenger_bremse_VM),
+    anhaenger_aufbau(anhaenger_aufbau_VM) {
 }
 // END Class Anhaenger
 
