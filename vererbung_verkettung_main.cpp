@@ -25,6 +25,7 @@ int main() {
             double fahrzeug_var_2 = 1111.1 + counter++;
             int pkw_var1 = counter++;
             int pkw_var2 = counter++;
+            // Pkw* addresse_neu_1 = NULL;
             addresse_neu_1 = new Pkw(pkw_var1, pkw_var2, fahrzeug_var_1, fahrzeug_var_2);
         }
         if (art_des_fahrzeuges == 2) {

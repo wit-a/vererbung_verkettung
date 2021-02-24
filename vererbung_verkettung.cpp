@@ -111,9 +111,10 @@ void Anhaenger::outputDatenFahrzeug() {
         << "Der Aufbau des Anhaengers:" << anhaenger_aufbau << endl;
 }
 // Konstruktor
-Anhaenger::Anhaenger() :Fahrzeug(),
+Anhaenger::Anhaenger() :Fahrzeug(), // Teil-Class 
 anhaenger_bremse("empty"),
 anhaenger_aufbau("empty"){
+    // Fahrzeug::Fahrzeug(); Konstruktor Aufruf TODO-1 
 }
 Anhaenger::Anhaenger(string& anhaenger_bremse_VM, string& anhaenger_aufbau_VM, string& fahrzeug_kennzeichen_VM, double& fahrzeug_max_gew_VM) 
     :Fahrzeug(fahrzeug_kennzeichen_VM, fahrzeug_max_gew_VM),
